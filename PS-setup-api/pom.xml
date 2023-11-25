@@ -8,7 +8,7 @@
 		<version>3.1.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.Ebilling.ps</groupId>
+	<groupId>com.Products.ps</groupId>
 	<artifactId>PS-setup-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>PS-setup-api</name>
@@ -48,7 +48,7 @@
 		
 	
 		<dependency>
-			<groupId>com.Ebilling.ps</groupId>
+			<groupId>com.Products.ps</groupId>
 			<artifactId>PS-domains</artifactId>
 			<version>0.0.1</version>
 		</dependency>
