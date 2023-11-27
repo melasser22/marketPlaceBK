@@ -21,7 +21,7 @@ public class ProductAssetService {
 	@Autowired
     private ProductAssetRepository productAssetRepository;
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(ProductPricingPlanService.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ProductAssetService.class);
 
 	
 

@@ -20,7 +20,7 @@ public class ProductFaqService {
 	@Autowired
     private ProductFaqRepositories productFaqRepositories;
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(ProductPricingPlanService.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ProductFaqService.class);
 
 	
 

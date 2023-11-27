@@ -21,7 +21,7 @@ public class ProductPartnerService {
 	@Autowired
     private ProductPartnerRepository productPartnerRepository;
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(ProductPricingPlanService.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ProductPartnerService.class);
 
 	
 

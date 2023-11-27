@@ -20,7 +20,7 @@ public class ProductCssService {
 	@Autowired
     private ProductCssRepository productCssRepository;
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(ProductPricingPlanService.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ProductCssService.class);
 
 
 		public  ServiceResult<ProductCss>getProductCssFiles(String productCode){
