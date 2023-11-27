@@ -17,7 +17,7 @@ public class ProductPricingPlan implements java.io.Serializable {
 	@Column(name = "plan_name", nullable = false)
 	private String planName;
 	 @Column(name = "price", nullable = false)
-    private String price;
+    private double price;
     @Column(name = "period", nullable = false)
     private String period;
     @Column(name = "plan_subtitle", nullable = false)
@@ -28,7 +28,7 @@ public class ProductPricingPlan implements java.io.Serializable {
 	public ProductPricingPlan() {
 	}
 
-	public ProductPricingPlan(Long id, String productCode, Long productId, String planName, String price,
+	public ProductPricingPlan(Long id, String productCode, Long productId, String planName, double price,
 			String period, String planSubtitle, List<ProductPricingPlanDetail> pricingPlanDetails) {
 		this.id = id;
 		this.productCode = productCode;
@@ -64,11 +64,11 @@ public class ProductPricingPlan implements java.io.Serializable {
 		this.planName = planName;
 	}
 
-	public String getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
