@@ -19,16 +19,21 @@ public class ProductPricingPlanDetail implements java.io.Serializable {
     private String planFeatureKey;
     @Column(name = "plan_feature_value", nullable = false)
     private String planFeatureValue;
-	
+    @Column(name = "plan_feature_type", nullable = false)
+    private String planFeatureType;
+    @Column(name = "img_path", nullable = true)
+    private String imgPath;
 	public ProductPricingPlanDetail() {
 	}
 
 	public ProductPricingPlanDetail(Long id, ProductPricingPlan productPricingList, String planFeatureKey,
-			String planFeatureValue) {
+			String planFeatureValue, String planFeatureType, String imgPath) {
 		this.id = id;
 		this.productPricingList = productPricingList;
 		this.planFeatureKey = planFeatureKey;
 		this.planFeatureValue = planFeatureValue;
+		this.planFeatureType = planFeatureType;
+		this.imgPath = imgPath;
 	}
 
 	public Long getId() {
@@ -63,10 +68,25 @@ public class ProductPricingPlanDetail implements java.io.Serializable {
 		this.planFeatureValue = planFeatureValue;
 	}
 
+	public String getPlanFeatureType() {
+		return planFeatureType;
+	}
+
+	public void setPlanFeatureType(String planFeatureType) {
+		this.planFeatureType = planFeatureType;
+	}
+
+	public String getImgPath() {
+		return imgPath;
+	}
+
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
+	}
+
 	@Override
 	public String toString() {
 		return "ProductPricingPlanDetail [id=" + id  + ", planFeatureKey="
 				+ planFeatureKey + ", planFeatureValue=" + planFeatureValue + "]";
 	}
-	
 }
