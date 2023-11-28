@@ -7,6 +7,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 @RestController
 @RequestMapping("/api/v1")
 
@@ -14,9 +16,11 @@ public class ProductContactController {
     @Autowired
     private ProductContactService productContactService;
 @Transactional
-    @PostMapping("/contact")
+    @PostMapping("/submit-contact-form")
     @CrossOrigin(origins = "*")
     public ServiceResult<ProductContactForm> addContact(@RequestBody ProductContactForm productContactForm){
+//    productContactForm.setMessageDate(new Date());
+
         return   this.productContactService.addContact(productContactForm);
 
     }
