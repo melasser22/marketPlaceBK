@@ -1,6 +1,5 @@
 package com.Products.ps.products.api;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
@@ -57,7 +56,34 @@ public class ProductPricingPlanService {
 		
 		
 	
-	public List<ProductPricingPlan> getAllPricingPlans(){
-        return this.productPricingPlanRepository.findAll();
+	public ServiceResult<ResultSet<ProductPricingPlan>> getAllPricingPlans(){
+		ServiceResult<ResultSet<ProductPricingPlan>> result =new ServiceResult<ResultSet<ProductPricingPlan>>();
+		ResultSet<ProductPricingPlan> resultSet= new ResultSet<ProductPricingPlan>();
+		HashMap<String, String> paramMap=new HashMap();
+		Random randomGenerator = new Random();
+        int maximum = 999999999;//largest number of 9 digits
+        int minimum = 100000000;//smallest number of 9 digits
+        Integer randomNum = null;
+        randomNum = randomGenerator.nextInt((maximum - minimum) + 1) + minimum;
+        
+		paramMap.put("P_RQ_ID",randomNum.toString());
+		result.setStatusCode(HttpStatus.OK.toString());
+		result.setReturnedObject(resultSet);
+				try{
+					List<ProductPricingPlan> allPlans =  this.productPricingPlanRepository.findAll();
+					for(int i=0; i<allPlans.size(); i++) {
+					}
+					resultSet.setReturnedList(allPlans);
+					
+			}catch(Exception e){
+				e.printStackTrace();
+			
+				LOGGER.error("Exception while getting Lookup list by module");
+				LOGGER.error(e.toString() + ">>>" + e.getMessage(), e);
+				result.setStatusCode(HttpStatus.EXPECTATION_FAILED.toString());
+				result.setDebugId(randomNum+"");		
+			}
+				return result;
     }
+       
 }

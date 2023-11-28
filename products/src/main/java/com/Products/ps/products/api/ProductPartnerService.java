@@ -12,24 +12,24 @@ import org.springframework.stereotype.Service;
 
 import com.Products.ps.models.common.ResultSet;
 import com.Products.ps.models.common.ServiceResult;
-import com.Products.ps.models.product.ProductAsset;
-import com.Products.ps.products.repositories.ProductAssetRepository;
+import com.Products.ps.models.product.ProductPartner;
+import com.Products.ps.products.repositories.ProductPartnerRepository;
 
 @Service
-public class ProductAssetService {
+public class ProductPartnerService {
 	
 	@Autowired
-    private ProductAssetRepository productAssetRepository;
+    private ProductPartnerRepository productPartnerRepository;
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(ProductAssetService.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ProductPartnerService.class);
 
 	
 
     
     // Get all Resources by Language
-     public  ServiceResult<ResultSet<ProductAsset>> getProductAssets(String productCode) {
-    	ServiceResult<ResultSet<ProductAsset>> result =new ServiceResult<ResultSet<ProductAsset>>();
-		ResultSet<ProductAsset> resultSet= new ResultSet<ProductAsset>();
+     public  ServiceResult<ResultSet<ProductPartner>> getProductPartners(String productCode) {
+    	ServiceResult<ResultSet<ProductPartner>> result =new ServiceResult<ResultSet<ProductPartner>>();
+		ResultSet<ProductPartner> resultSet= new ResultSet<ProductPartner>();
 		HashMap<String, String> paramMap=new HashMap();
 		Random randomGenerator = new Random();
         int maximum = 999999999;//largest number of 9 digits
@@ -42,7 +42,7 @@ public class ProductAssetService {
 		result.setReturnedObject(resultSet);
 		
 				try{
-					resultSet.setReturnedList(productAssetRepository.findByproductCode(productCode));
+					resultSet.setReturnedList(productPartnerRepository.findByproductCode(productCode));
 					
 			}catch(Exception e){
 				e.printStackTrace();
