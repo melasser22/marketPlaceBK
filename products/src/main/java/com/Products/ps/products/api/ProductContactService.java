@@ -36,7 +36,7 @@ public class ProductContactService {
         randomNum = randomGenerator.nextInt((maximum - minimum) + 1) + minimum;
 
         paramMap.put("P_RQ_ID",randomNum.toString());
-        result.setStatusCode(HttpStatus.CREATED.toString());
+        result.setStatusCode("I201");
         try{
             ProductContactForm productContactFormResponse = this.productContactFormRepository.save(productContactForm);
             result.setReturnedObject(productContactFormResponse);
