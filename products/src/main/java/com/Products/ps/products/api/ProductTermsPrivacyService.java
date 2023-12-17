@@ -1,33 +1,35 @@
 package com.Products.ps.products.api;
 
+import com.Products.ps.models.common.ResultSet;
 import com.Products.ps.models.common.ServiceResult;
-import com.Products.ps.models.product.ProductContactForm;
 import com.Products.ps.models.product.ProductCss;
-import com.Products.ps.products.repositories.ProductContactFormRepository;
-import com.Products.ps.products.repositories.ProductCssRepository;
-import jakarta.persistence.EntityManager;
+import com.Products.ps.models.product.ProductFaq;
+import com.Products.ps.models.product.ProductTermsPrivacy;
+import com.Products.ps.products.repositories.ProductTermsPrivacyRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.Timestamp;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Random;
 
+
+
 @Service
-public class ProductContactService {
+public class ProductTermsPrivacyService {
+
 
     @Autowired
-    private ProductContactFormRepository productContactFormRepository;
-    private static final Logger LOGGER = LoggerFactory.getLogger(ProductContactService.class);
+    private ProductTermsPrivacyRepository productTermsPrivacyRepository;
 
-    @Transactional
-    public  ServiceResult<ProductContactForm>addContact(ProductContactForm productContactForm){
-        ServiceResult<ProductContactForm> result =new ServiceResult<ProductContactForm>();
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProductTermsPrivacyService.class);
+
+
+    public ServiceResult<ResultSet<ProductTermsPrivacy>> getProductTermsPrivacyContent(String productCode){
+        ServiceResult<ResultSet<ProductTermsPrivacy>> result =new ServiceResult<ResultSet<ProductTermsPrivacy>>();
+        ResultSet<ProductTermsPrivacy> resultSet= new ResultSet<ProductTermsPrivacy>();
         HashMap<String, String> paramMap=new HashMap();
         Random randomGenerator = new Random();
         int maximum = 999999999;//largest number of 9 digits
@@ -36,11 +38,10 @@ public class ProductContactService {
         randomNum = randomGenerator.nextInt((maximum - minimum) + 1) + minimum;
 
         paramMap.put("P_RQ_ID",randomNum.toString());
-        result.setStatusCode("I201");
+        result.setStatusCode(HttpStatus.OK.toString());
+        result.setReturnedObject(resultSet);
         try{
-            ProductContactForm productContactFormResponse = this.productContactFormRepository.save(productContactForm);
-            result.setReturnedObject(productContactFormResponse);
-
+            resultSet.setReturnedList(productTermsPrivacyRepository.findByproductCode(productCode));
 
         }catch(Exception e){
             e.printStackTrace();
@@ -52,8 +53,4 @@ public class ProductContactService {
         return result;
     }
 
-
-//    public ProductContactForm addContact(ProductContactForm productContactForm){
-//        return this.productContactFormRepository.save(productContactForm);
-//    }
 }

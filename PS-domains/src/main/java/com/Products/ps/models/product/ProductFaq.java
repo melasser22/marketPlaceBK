@@ -9,18 +9,28 @@ public class ProductFaq {
 	private Long id;
 	 @Column(name = "product_code", nullable = false)
     private String productCode;
-	 @Column(name = "question", nullable = false)
-    private String question;
-    @Column(name = "answer", nullable = false)
-    private String answer;
+	 @Column(name = "question_en", nullable = false)
+    private String questionEn;
+    @Column(name = "answer_en", nullable = false)
+    private String answerEn;
+
+	@Column(name = "question_ar", nullable = false)
+	private String questionAr;
+
+	@Column(name = "answer_ar", nullable = false)
+	private String answerAr;
 	public ProductFaq() {
 	}
-	public ProductFaq(Long id, String productCode, String question, String answer) {
+
+	public ProductFaq(Long id, String productCode, String questionEn, String answerEn, String questionAr, String answerAr) {
 		this.id = id;
 		this.productCode = productCode;
-		this.question = question;
-		this.answer = answer;
+		this.questionEn = questionEn;
+		this.answerEn = answerEn;
+		this.questionAr = questionAr;
+		this.answerAr = answerAr;
 	}
+
 	public Long getId() {
 		return id;
 	}
@@ -33,17 +43,36 @@ public class ProductFaq {
 	public void setProductCode(String productCode) {
 		this.productCode = productCode;
 	}
-	public String getQuestion() {
-		return question;
+
+	public String getQuestionEn() {
+		return questionEn;
 	}
-	public void setQuestion(String question) {
-		this.question = question;
+
+	public void setQuestionEn(String questionEn) {
+		this.questionEn = questionEn;
 	}
-	public String getAnswer() {
-		return answer;
+
+	public String getAnswerEn() {
+		return answerEn;
 	}
-	public void setAnswer(String answer) {
-		this.answer = answer;
+
+	public void setAnswerEn(String answerEn) {
+		this.answerEn = answerEn;
 	}
-    
+
+	public String getQuestionAr() {
+		return questionAr;
+	}
+
+	public void setQuestionAr(String questionAr) {
+		this.questionAr = questionAr;
+	}
+
+	public String getAnswerAr() {
+		return answerAr;
+	}
+
+	public void setAnswerAr(String answerAr) {
+		this.answerAr = answerAr;
+	}
 }
