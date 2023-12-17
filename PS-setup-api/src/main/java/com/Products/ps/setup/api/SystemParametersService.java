@@ -5,16 +5,19 @@ import org.springframework.stereotype.Service;
 
 import com.Products.ps.models.common.ResultSet;
 import com.Products.ps.models.common.ServiceResult;
+import com.Products.ps.models.setup.Resources;
 import com.Products.ps.models.setup.SystemParameter;
 import com.Products.ps.setup.repositories.SystemParametersRepository;
+import com.Products.ps.setup.util.CryptoUtils;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
-
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 
 @Service
 public class SystemParametersService {
@@ -23,6 +26,8 @@ public class SystemParametersService {
     @Autowired 
     private SystemParametersRepository systemParametersRepository;
     
+    private CryptoUtils cryptoUtils;
+
     
     // Get all system Parameters
     public ServiceResult<ResultSet<SystemParameter>> getSystemParametersByModule(String SPD_Module) {
@@ -34,12 +39,19 @@ public class SystemParametersService {
         
     	ServiceResult<ResultSet<SystemParameter>> result =new ServiceResult<ResultSet<SystemParameter>>();
 		//*************************Params**************************
-    	result.setStatusCode("200");
+		result.setStatusCode(HttpStatus.OK.toString());
 
     	result.setRqUID(randomNum.toString());
 			try{
 				//create ResultSet object and set its parameters
 				ResultSet<SystemParameter> resultSet= new ResultSet<SystemParameter>();
+				List<SystemParameter> systemParametersList = systemParametersRepository.getSystemParametersByModule(SPD_Module);
+				for(SystemParameter systemParam:systemParametersList) {
+					systemParam.setSp_module(CryptoUtils.encrypt(systemParam.getSp_module()));
+					systemParam.setSp_name(CryptoUtils.encrypt(systemParam.getSp_name()));
+					systemParam.setSp_value(CryptoUtils.encrypt(systemParam.getSp_value()));
+				}
+
 				resultSet.setReturnedList(systemParametersRepository.getSystemParametersByModule(SPD_Module));
 				result.setReturnedObject(resultSet);
 				
@@ -48,7 +60,7 @@ public class SystemParametersService {
 
 				LOGGER.error("Exception while getting system params list by module");
 				LOGGER.error(e.toString() + ">>>" + e.getMessage(), e);
-				result.setStatusCode("E299995");
+				result.setStatusCode(HttpStatus.EXPECTATION_FAILED.toString());
 				result.setDebugId(randomNum+"");
 			}
 		return result;
