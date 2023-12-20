@@ -22,10 +22,10 @@ public class ProductsController {
     public ServiceResult<Products> getProductByCode(String productCode){
         return this.productsService.getProductByCode(productCode);
     }
+
     @GetMapping("/get-available-products")
     @CrossOrigin(origins = "*")
-    public ServiceResult<ResultSet<Products>> findAllAvailableProducts(){
-        return this.productsService.findAllAvailableProducts();
+    public ServiceResult<ResultSet<Products>> findAvailableProducts(){
+        return this.productsService.findAvailableProducts();
     }
-
 }

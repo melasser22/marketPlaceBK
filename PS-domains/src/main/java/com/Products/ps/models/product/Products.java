@@ -21,7 +21,7 @@ public class Products  implements java.io.Serializable {
 
 
     @Column(name = "description", nullable = false)
-    private String Description;
+    private String description;
 
     @Column(name = "en_title", nullable = false)
     private String englishTitle;
@@ -31,18 +31,21 @@ public class Products  implements java.io.Serializable {
 
     @Column(name = "is_enabled", nullable = false)
     private String isEnabled;
+    @Column(name = "api_key", nullable = false)
+    private String apiKey;
 
     public Products() {
     }
 
-    public Products(Long id, String productCode, long saasProductId, String description, String englishTitle, String arabicTitle, String isEnabled) {
+    public Products(Long id, String productCode, long saasProductId, String description, String englishTitle, String arabicTitle, String isEnabled, String apiKey) {
         this.id = id;
         this.productCode = productCode;
         this.saasProductId = saasProductId;
-        Description = description;
+       this.description = description;
         this.englishTitle = englishTitle;
         this.arabicTitle = arabicTitle;
         this.isEnabled = isEnabled;
+        this.apiKey=apiKey;
     }
 
     public Long getId() {
@@ -70,11 +73,11 @@ public class Products  implements java.io.Serializable {
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+       this.description = description;
     }
 
     public String getEnglishTitle() {
@@ -99,5 +102,13 @@ public class Products  implements java.io.Serializable {
 
     public void setIsEnabled(String isEnabled) {
         this.isEnabled = isEnabled;
+    }
+
+    public String getApiKey() {
+        return apiKey;
+    }
+
+    public void setApiKey(String apiKey) {
+        this.apiKey = apiKey;
     }
 }

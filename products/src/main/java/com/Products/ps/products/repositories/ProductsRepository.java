@@ -10,7 +10,7 @@ public interface ProductsRepository extends JpaRepository<Products, Long> {
     Products findByproductCode(String productCode);
     Products findBysaasProductId(long SaasProductId);
 
-    @Query("SELECT p FROM Products p WHERE p.isEnabled ='y'")
+    @Query("SELECT p FROM Products p WHERE p.isEnabled ='Y'")
     List<Products> findAllAvailableProducts();
 
 

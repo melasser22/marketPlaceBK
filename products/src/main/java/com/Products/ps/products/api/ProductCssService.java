@@ -37,8 +37,6 @@ public class ProductCssService {
 					try{
 						ProductCss productCss = this.productCssRepository.findByproductCode(productCode);
 						result.setReturnedObject(productCss);
-
-						
 				}catch(Exception e){
 					e.printStackTrace();
 					LOGGER.error("Exception while getting Lookup list by module");
