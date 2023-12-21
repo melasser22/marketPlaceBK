@@ -122,6 +122,8 @@ public class ProductsService {
                    product.setDescription(CryptoUtils.encrypt(product.getDescription()));
                    product.setIsEnabled(CryptoUtils.encrypt(product.getIsEnabled()));
                    product.setApiKey(CryptoUtils.encrypt(product.getApiKey()));
+                   product.setSaasChannelUserName(CryptoUtils.encrypt(product.getSaasChannelUserName()));
+                   product.setSaasChannelPassword(CryptoUtils.encrypt(product.getSaasChannelPassword()));
 
 
                }

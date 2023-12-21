@@ -31,21 +31,29 @@ public class Products  implements java.io.Serializable {
 
     @Column(name = "is_enabled", nullable = false)
     private String isEnabled;
+    @Column(name = "saas_channel_userName", nullable = false)
+    private String saasChannelUserName;
+
+    @Column(name = "saas_channel_password", nullable = false)
+    private String saasChannelPassword;
+
     @Column(name = "api_key", nullable = false)
     private String apiKey;
 
     public Products() {
     }
 
-    public Products(Long id, String productCode, long saasProductId, String description, String englishTitle, String arabicTitle, String isEnabled, String apiKey) {
+    public Products(Long id, String productCode, long saasProductId, String description, String englishTitle, String arabicTitle, String isEnabled, String saasChannelUserName, String saasChannelPassword, String apiKey) {
         this.id = id;
         this.productCode = productCode;
         this.saasProductId = saasProductId;
-       this.description = description;
+        this.description = description;
         this.englishTitle = englishTitle;
         this.arabicTitle = arabicTitle;
         this.isEnabled = isEnabled;
-        this.apiKey=apiKey;
+        this.saasChannelUserName = saasChannelUserName;
+        this.saasChannelPassword = saasChannelPassword;
+        this.apiKey = apiKey;
     }
 
     public Long getId() {
@@ -110,5 +118,21 @@ public class Products  implements java.io.Serializable {
 
     public void setApiKey(String apiKey) {
         this.apiKey = apiKey;
+    }
+
+    public String getSaasChannelUserName() {
+        return saasChannelUserName;
+    }
+
+    public void setSaasChannelUserName(String saasChannelUserName) {
+        this.saasChannelUserName = saasChannelUserName;
+    }
+
+    public String getSaasChannelPassword() {
+        return saasChannelPassword;
+    }
+
+    public void setSaasChannelPassword(String saasChannelPassword) {
+        this.saasChannelPassword = saasChannelPassword;
     }
 }
