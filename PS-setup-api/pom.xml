@@ -9,8 +9,8 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.Products.ps</groupId>
-	<artifactId>PS-setup-api</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>products-setup-api</artifactId>
+	<version>1.0</version>
 	<name>PS-setup-api</name>
 	<description>Spring Boot Setup API</description>
 	<properties>

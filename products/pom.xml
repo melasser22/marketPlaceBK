@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.Products.ps</groupId>
 	<artifactId>products</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<name>products</name>
 	<description>This is the saas products project</description>
 	<properties>
