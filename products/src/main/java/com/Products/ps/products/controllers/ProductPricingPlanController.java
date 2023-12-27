@@ -12,7 +12,7 @@ import com.Products.ps.models.product.ProductPricingPlan;
 import com.Products.ps.products.api.ProductPricingPlanService;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/auth")
 public class ProductPricingPlanController {
 
 	@Autowired

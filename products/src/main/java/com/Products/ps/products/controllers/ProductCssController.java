@@ -13,7 +13,7 @@ import com.Products.ps.models.product.ProductCss;
 import com.Products.ps.products.api.ProductCssService;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/auth")
 public class ProductCssController {
 
 	@Autowired
