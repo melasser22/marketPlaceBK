@@ -1,0 +1,17 @@
+docker build -t saas-product-setup-api .
+
+docker run -p 8080:80 products-setup-api:v1.0
+
+docker tag saas-product-setup-api maelaaser/ejada-saas-products-marketplace-bk:v1.0
+
+docker push maelaaser/ejada-saas-products-marketplace-bk:v1.0
+
+
+
+
+oc import-image saas-products-setup-api --from docker.io/maelaaser/ejada-saas-products-marketplace-bk:v1.0 --confirm
+oc get is  
+
+oc create -f deployment.yaml  
+oc get pod         
+

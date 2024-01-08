@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  saas-products-setup-api   
+  labels:
+    app: saas-products-setup-api 
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: saas-products-setup-api  
+  template:
+    metadata:
+      labels:
+        app: saas-products-setup-api  
+    spec:
+      containers:
+      - name: saas-products-setup-api
+        image:  image-registry.openshift-image-registry.svc:5000/saas-product-marketplace/saas-products-setup-api  
+        ports:
+        - containerPort: 8080

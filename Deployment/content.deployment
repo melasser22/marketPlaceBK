@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  saas-products-content-api   
+  labels:
+    app: saas-products-content-api 
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: saas-products-content-api  
+  template:
+    metadata:
+      labels:
+        app: saas-products-content-api  
+    spec:
+      containers:
+      - name: saas-products-content-api
+        image:  image-registry.openshift-image-registry.svc:5000/saas-product-marketplace/saas-products-content-api  
+        ports:
+        - containerPort: 9090
